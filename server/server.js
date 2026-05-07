@@ -1,4 +1,5 @@
 import path from 'node:path';
+import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { config as loadEnv } from 'dotenv';
 import express from 'express';
@@ -40,9 +41,29 @@ app.get('/api/health', (_req, res) => {
 });
 
 const clientDist = path.resolve(__dirname, '../client/dist');
+const indexHtml = path.join(clientDist, 'index.html');
+const distExists = fs.existsSync(clientDist);
+const indexExists = fs.existsSync(indexHtml);
+console.log(`static: clientDist=${clientDist}`);
+console.log(`static: dist exists=${distExists}, index.html exists=${indexExists}`);
+
 app.use(express.static(clientDist));
-app.get(/^(?!\/api).*/, (_req, res) => {
-  res.sendFile(path.join(clientDist, 'index.html'));
+
+app.use((req, res, next) => {
+  if (req.method !== 'GET') return next();
+  if (req.path.startsWith('/api/')) return next();
+  if (!indexExists) {
+    return res
+      .status(500)
+      .type('text/plain')
+      .send(`client/dist/index.html missing.\nResolved path: ${indexHtml}\nDid the client build run? Render build command should be: npm install && npm run build`);
+  }
+  res.sendFile(indexHtml, (err) => {
+    if (err) {
+      console.error('sendFile error:', err.message);
+      if (!res.headersSent) res.status(500).type('text/plain').send('Failed to serve index.html');
+    }
+  });
 });
 
 app.use((err, _req, res, _next) => {

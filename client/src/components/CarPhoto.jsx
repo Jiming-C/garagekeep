@@ -1,32 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { api } from '../lib/api.js';
+import { buildPhotoUrl } from '../lib/photoCache.js';
 import { easeOutExpo } from '../lib/motion.js';
 import s from './CarPhoto.module.css';
 
 export default function CarPhoto({ make, model, year, angle = '01', className }) {
-  const [url, setUrl] = useState(null);
+  const url = useMemo(() => buildPhotoUrl(make, model, year, angle), [make, model, year, angle]);
   const [errored, setErrored] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    let cancelled = false;
     setErrored(false);
     setLoaded(false);
-    setUrl(null);
-    if (!make || !model) return;
-    (async () => {
-      try {
-        const { url } = await api.photo.url(make, model, year, angle);
-        if (!cancelled) setUrl(url);
-      } catch {
-        if (!cancelled) setErrored(true);
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [make, model, year, angle]);
+  }, [url]);
 
   const showFallback = errored || !url;
   return (

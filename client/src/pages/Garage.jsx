@@ -6,6 +6,7 @@ import CarCard from '../components/CarCard.jsx';
 import { SkeletonCard } from '../components/Skeleton.jsx';
 import Empty from '../components/Empty.jsx';
 import { api } from '../lib/api.js';
+import { preloadPhotos } from '../lib/photoCache.js';
 import { stagger } from '../lib/motion.js';
 import s from './Garage.module.css';
 
@@ -18,7 +19,10 @@ export default function Garage() {
     (async () => {
       try {
         const data = await api.cars.list();
-        if (!cancelled) setCars(data);
+        if (!cancelled) {
+          setCars(data);
+          preloadPhotos(data);
+        }
       } catch (e) {
         if (!cancelled) setErr(e.message);
       }

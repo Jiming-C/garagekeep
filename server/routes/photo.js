@@ -22,6 +22,8 @@ router.get('/', (req, res) => {
   if (year) params.set('modelYear', String(year));
 
   const url = `https://cdn.imagin.studio/getimage?${params.toString()}`;
+  // The URL is fully deterministic from inputs — safe to cache for a year.
+  res.set('Cache-Control', 'public, max-age=31536000, immutable');
   res.json({ url, make, model, year });
 });
 

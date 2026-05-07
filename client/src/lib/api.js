@@ -1,3 +1,5 @@
+import { buildPhotoUrl } from './photoCache.js';
+
 const BASE = '/api';
 
 async function http(method, path, body) {
@@ -28,10 +30,10 @@ export const api = {
     decode: (vin) => http('GET', `/vin/${encodeURIComponent(vin)}`),
   },
   photo: {
-    url: (make, model, year, angle = '01') => {
-      const p = new URLSearchParams({ make, model, angle });
-      if (year) p.set('year', String(year));
-      return http('GET', `/photo?${p.toString()}`);
-    },
+    // Synchronous; no /api/photo round-trip. URL is built on the client and
+    // memoized in localStorage. Returns a Promise to preserve the call shape
+    // existing components rely on.
+    url: (make, model, year, angle = '01') =>
+      Promise.resolve({ url: buildPhotoUrl(make, model, year, angle), make, model, year }),
   },
 };

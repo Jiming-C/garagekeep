@@ -4,8 +4,11 @@ import { buildPhotoUrl } from '../lib/photoCache.js';
 import { easeOutExpo } from '../lib/motion.js';
 import s from './CarPhoto.module.css';
 
-export default function CarPhoto({ make, model, year, angle = '01', className }) {
-  const url = useMemo(() => buildPhotoUrl(make, model, year, angle), [make, model, year, angle]);
+export default function CarPhoto({ make, model, year, angle = '01', photoUrl, className }) {
+  const url = useMemo(
+    () => photoUrl || buildPhotoUrl(make, model, year, angle),
+    [photoUrl, make, model, year, angle]
+  );
   const [errored, setErrored] = useState(false);
   const [loaded, setLoaded] = useState(false);
 

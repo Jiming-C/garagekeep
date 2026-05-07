@@ -1,0 +1,59 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bone-100);
+  color: var(--bone-700);
+  font-size: var(--fs-body-s);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  padding: 5px 12px 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--bone-200);
+  white-space: nowrap;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.good .dot { color: var(--good); }
+.soon .dot { color: var(--soon); }
+.overdue .dot {
+  color: var(--overdue);
+  animation: overduePulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.overdue .dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  animation: overdueRing 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes overduePulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+
+@keyframes overdueRing {
+  0%   { transform: scale(0.7); opacity: 0.35; }
+  100% { transform: scale(2.0); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overdue .dot,
+  .overdue .dot::after { animation: none; }
+}
+
+.label {
+  color: var(--bone-700);
+}

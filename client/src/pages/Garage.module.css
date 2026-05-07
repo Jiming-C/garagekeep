@@ -1,0 +1,29 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 64px 32px;
+}
+
+.headerCta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  border-bottom: 1px solid var(--bone-300);
+  padding-bottom: 4px;
+  font-size: var(--fs-body);
+  color: var(--bone-900);
+  transition: border-color var(--dur-micro) var(--ease-out-quart),
+              gap var(--dur-card) var(--ease-out-quart);
+}
+
+.headerCta:hover {
+  border-color: var(--accent);
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .grid {
+    gap: 48px 16px;
+    grid-template-columns: 1fr;
+  }
+}

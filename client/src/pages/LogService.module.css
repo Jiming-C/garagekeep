@@ -1,0 +1,40 @@
+.back {
+  display: inline-block;
+  font-size: var(--fs-body-s);
+  color: var(--bone-500);
+  margin-bottom: 16px;
+}
+
+.back:hover {
+  color: var(--accent);
+}
+
+.form {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.formError {
+  color: var(--overdue);
+  font-size: var(--fs-body-s);
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .row { grid-template-columns: 1fr; gap: 24px; }
+}

@@ -1,0 +1,35 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 520px;
+  padding: 64px 0;
+}
+
+.body {
+  color: var(--bone-500);
+  margin: 0;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  border-bottom: 1px solid var(--bone-300);
+  padding-bottom: 4px;
+  font-size: var(--fs-body-l);
+  color: var(--bone-900);
+  width: max-content;
+  transition: border-color var(--dur-micro) var(--ease-out-quart),
+              gap var(--dur-card) var(--ease-out-quart);
+}
+
+.cta:hover {
+  border-color: var(--accent);
+  gap: 18px;
+}
+
+.arrow {
+  color: var(--accent);
+  transition: transform var(--dur-card) var(--ease-out-quart);
+}

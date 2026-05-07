@@ -1,0 +1,48 @@
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  background-color: var(--bone-100);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6%;
+  transition: transform var(--dur-card) var(--ease-out-quart);
+}
+
+.fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  padding: 32px;
+  color: var(--bone-500);
+}
+
+.fbYear {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--bone-300);
+  font-variation-settings: 'opsz' 36;
+}
+
+.fbName {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--bone-700);
+  font-variation-settings: 'opsz' 36;
+}

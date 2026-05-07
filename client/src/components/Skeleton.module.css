@@ -1,0 +1,40 @@
+.skel {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--bone-100) 0%, var(--bone-150) 50%, var(--bone-100) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.photo {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius-md);
+  background: var(--bone-100);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px;
+}
+
+.spacer {
+  height: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skel { animation: none; background: var(--bone-100); }
+}

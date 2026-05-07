@@ -76,7 +76,7 @@ export default function CarDetail() {
 
       <section className={s.hero}>
         <motion.div className={s.heroPhoto} {...stagger(0.05)}>
-          <CarPhoto make={car.make} model={car.model} year={car.year} photoUrl={car.photoUrl} />
+          <CarPhoto make={car.make} model={car.model} year={car.year} />
         </motion.div>
         <motion.div className={s.heroInfo} {...stagger(0.12)}>
           <p className="eyebrow">{car.year} · {car.make} {car.model}</p>

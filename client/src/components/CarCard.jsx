@@ -38,13 +38,7 @@ export default function CarCard({ car, index = 0 }) {
           onMouseLeave={onLeave}
           style={reduce ? undefined : { rotateX, rotateY, transformStyle: 'preserve-3d' }}
         >
-          <CarPhoto
-            make={car.make}
-            model={car.model}
-            year={car.year}
-            photoUrl={car.photoUrl}
-            className={s.photo}
-          />
+          <CarPhoto make={car.make} model={car.model} year={car.year} className={s.photo} />
         </motion.div>
         <div className={s.body}>
           <div className={s.head}>

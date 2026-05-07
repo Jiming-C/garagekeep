@@ -41,7 +41,7 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const { name, make, model, year, vin, currentMileage, notes, photoUrl } = req.body || {};
+    const { name, make, model, year, vin, currentMileage, notes } = req.body || {};
     if (!name || !make || !model || !year) {
       return res.status(400).json({ error: 'name, make, model, year are required.' });
     }
@@ -53,7 +53,6 @@ router.post('/', async (req, res, next) => {
       vin: vin ? String(vin).trim().toUpperCase() : undefined,
       currentMileage: Number(currentMileage) || 0,
       notes: notes ? String(notes).trim() : undefined,
-      photoUrl: photoUrl ? String(photoUrl).trim() : undefined,
     });
     res.status(201).json(car);
   } catch (e) {
@@ -64,7 +63,7 @@ router.post('/', async (req, res, next) => {
 router.patch('/:id', async (req, res, next) => {
   try {
     if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ error: 'Not found' });
-    const updatable = ['name', 'make', 'model', 'year', 'vin', 'currentMileage', 'notes', 'photoUrl'];
+    const updatable = ['name', 'make', 'model', 'year', 'vin', 'currentMileage', 'notes'];
     const update = {};
     for (const k of updatable) if (k in req.body) update[k] = req.body[k];
     const car = await Car.findByIdAndUpdate(req.params.id, update, { new: true, runValidators: true });

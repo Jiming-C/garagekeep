@@ -9,7 +9,6 @@ const carSchema = new mongoose.Schema(
     vin: { type: String, trim: true, uppercase: true, maxlength: 17 },
     currentMileage: { type: Number, required: true, min: 0, default: 0 },
     notes: { type: String, trim: true, maxlength: 500 },
-    photoUrl: { type: String, trim: true, maxlength: 500 },
   },
   { timestamps: true }
 );

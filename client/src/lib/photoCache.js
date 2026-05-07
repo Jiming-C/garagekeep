@@ -11,6 +11,13 @@ const CUSTOMER = 'img';
 const STORAGE_KEY = 'gk:photoUrlCache:v1';
 const MAX_ENTRIES = 60;
 
+// Demo overrides — for specific make/model combinations we'd rather show a
+// curated local photo than the Imagin render. Lookup is case-insensitive.
+// Files live in client/public/ and are served from the site root.
+const LOCAL_OVERRIDES = {
+  'audi|a8': '/audi-a8.jpg',
+};
+
 const memCache = new Map();
 
 function loadFromStorage() {
@@ -49,6 +56,10 @@ function keyFor(make, model, year, angle) {
 
 export function buildPhotoUrl(make, model, year, angle = '01') {
   if (!make || !model) return null;
+
+  const overrideKey = `${String(make).toLowerCase()}|${String(model).toLowerCase()}`;
+  const override = LOCAL_OVERRIDES[overrideKey];
+  if (override) return override;
 
   const key = keyFor(make, model, year, angle);
   const hit = memCache.get(key);

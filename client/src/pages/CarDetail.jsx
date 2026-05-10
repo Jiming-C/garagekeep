@@ -113,6 +113,12 @@ export default function CarDetail() {
             {car.services?.[0] && <span className={s.statSub}> · {fmtDate(car.services[0].date)}</span>}
           </p>
         </div>
+        <div className={s.stat}>
+          <p className="eyebrow">Total spent</p>
+          <p className={`${s.statValue} tabular`}>
+            {fmtCost(car.services?.reduce((sum, sv) => sum + (sv.cost || 0), 0) ?? 0)}
+          </p>
+        </div>
       </motion.section>
 
       <motion.section {...stagger(0.24)}>

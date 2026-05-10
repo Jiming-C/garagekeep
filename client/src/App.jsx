@@ -5,6 +5,7 @@ import Nav from './components/Nav.jsx';
 import Garage from './pages/Garage.jsx';
 import CarDetail from './pages/CarDetail.jsx';
 import AddCar from './pages/AddCar.jsx';
+import EditCar from './pages/EditCar.jsx';
 import LogService from './pages/LogService.jsx';
 import About from './pages/About.jsx';
 
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/" element={<Garage />} />
           <Route path="/cars/new" element={<AddCar />} />
           <Route path="/cars/:id" element={<CarDetail />} />
+          <Route path="/cars/:id/edit" element={<EditCar />} />
           <Route path="/cars/:id/services/new" element={<LogService />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />

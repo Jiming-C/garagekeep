@@ -146,6 +146,7 @@ export default function CarDetail() {
       </motion.section>
 
       <motion.section className={s.danger} {...stagger(0.30)}>
+        <Button as={Link} to={`/cars/${id}/edit`} variant="ghost">Edit car</Button>
         <Button variant="danger" onClick={deleteCar}>Delete this car</Button>
       </motion.section>
     </PageEnter>

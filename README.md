@@ -2,7 +2,7 @@
 
 **Submitted by:** Jiming Chen (jimingc)
 
-**Group Members:** Jiming Chen (jimingc), [Group Member 2 Name] ([dirID]), [Group Member 3 Name] ([dirID]), [Group Member 4 Name] ([dirID])
+**Group Members:** Jiming Chen (jimingc), Daniel Louis (dlouis1), [Group Member 3 Name] ([dirID]), [Group Member 4 Name] ([dirID])
 
 **App Description:** A personal car garage and maintenance journal — log your vehicles, record services, and see at a glance what's overdue, due soon, or good across every car you own.
 

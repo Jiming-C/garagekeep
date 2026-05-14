@@ -6,7 +6,7 @@
 
 **App Description:** A personal car garage and maintenance journal — log your vehicles, record services, and see at a glance what's overdue, due soon, or good across every car you own.
 
-**YouTube Video Link:** [TODO: paste demo URL once recorded]
+**YouTube Video Link:** https://youtu.be/k79I8zlGxjQ
 
 **APIs:**
 - NHTSA vPIC API (https://vpic.nhtsa.dot.gov/api/) — VIN decode, used to auto-fill make/model/year when adding a car.

@@ -16,6 +16,8 @@ const MAX_ENTRIES = 60;
 // Files live in client/public/ and are served from the site root.
 const LOCAL_OVERRIDES = {
   'audi|a8': '/audi-a8.jpg',
+  'toyota|camry': '/camry.jpg',
+  'bmw|m3': '/m3.jpg'
 };
 
 const memCache = new Map();
@@ -51,13 +53,13 @@ function persistToStorage() {
 loadFromStorage();
 
 function keyFor(make, model, year, angle) {
-  return `${String(make).toLowerCase()}|${String(model).toLowerCase()}|${year || ''}|${angle}`;
+  return `${String(make).trim().toLowerCase()}|${String(model).trim().toLowerCase()}|${year || ''}|${angle}`;
 }
 
 export function buildPhotoUrl(make, model, year, angle = '01') {
   if (!make || !model) return null;
 
-  const overrideKey = `${String(make).toLowerCase()}|${String(model).toLowerCase()}`;
+  const overrideKey = `${String(make).trim().toLowerCase()}|${String(model).trim().toLowerCase()}`;
   const override = LOCAL_OVERRIDES[overrideKey];
   if (override) return override;
 

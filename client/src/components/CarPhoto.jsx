@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { buildPhotoUrl } from '../lib/photoCache.js';
 import { easeOutExpo } from '../lib/motion.js';
@@ -9,9 +9,14 @@ export default function CarPhoto({ make, model, year, angle = '01', className })
   const [errored, setErrored] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
+  const imgRef = useRef(null);
   useEffect(() => {
     setErrored(false);
     setLoaded(false);
+
+    if (imgRef.current && imgRef.current.complete) {
+      setLoaded(true);
+    }
   }, [url]);
 
   const showFallback = errored || !url;
@@ -19,6 +24,8 @@ export default function CarPhoto({ make, model, year, angle = '01', className })
     <div className={`${s.frame} ${className || ''}`}>
       {!showFallback && (
         <motion.img
+          ref={imgRef}
+          key={url}
           className={s.img}
           src={url}
           alt={`${year || ''} ${make} ${model}`.trim()}

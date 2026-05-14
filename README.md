@@ -2,7 +2,7 @@
 
 **Submitted by:** Jiming Chen (jimingc)
 
-**Group Members:** Jiming Chen (jimingc), Daniel Louis (dlouis1), [Group Member 3 Name] ([dirID]), [Group Member 4 Name] ([dirID])
+**Group Members:** Jiming Chen (jimingc), Daniel Louis (dlouis1), [Group Member 3 Name] ([dirID]), Tong Zhan (tz2004)
 
 **App Description:** A personal car garage and maintenance journal — log your vehicles, record services, and see at a glance what's overdue, due soon, or good across every car you own.
 
@@ -16,7 +16,7 @@
 
 **Deployed App Link:** [TODO: paste Render URL once deployed]
 
-**AI Use:** 1. Claude Code
+**AI Use:** 1. Claude Code 2. Gemini 3.1 Pro
 
 ---
 

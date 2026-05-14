@@ -16,8 +16,8 @@ const MAX_ENTRIES = 60;
 // Files live in client/public/ and are served from the site root.
 const LOCAL_OVERRIDES = {
   'audi|a8': '/audi-a8.jpg',
-  'toyota|camry': '/camry.jpg',
-  'bmw|m3': '/m3.jpg'
+  'toyota|camry': '/camry.png',
+  'bmw|m3': '/m3.png'
 };
 
 const memCache = new Map();

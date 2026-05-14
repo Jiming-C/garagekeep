@@ -29,7 +29,6 @@ export default function CarPhoto({ make, model, year, angle = '01', className })
           className={s.img}
           src={url}
           alt={`${year || ''} ${make} ${model}`.trim()}
-          loading="lazy"
           onLoad={() => setLoaded(true)}
           onError={() => setErrored(true)}
           initial={{ opacity: 0, scale: 1.06, clipPath: 'inset(0 100% 0 0)' }}
